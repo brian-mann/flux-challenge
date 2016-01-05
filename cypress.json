@@ -1,0 +1,4 @@
+{
+  "commandTimeout": 60000,
+  "requestTimeout": 60000
+}

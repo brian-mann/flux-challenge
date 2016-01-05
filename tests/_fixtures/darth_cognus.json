@@ -1,0 +1,16 @@
+{
+  "id": 2942,
+  "name": "Darth Cognus",
+  "homeworld": {
+    "id": 5,
+    "name": "Iktotch"
+  },
+  "master": {
+    "url": "http://localhost:3000/dark-jedis/3385",
+    "id": 3385
+  },
+  "apprentice": {
+    "url": "http://localhost:3000/dark-jedis/1121",
+    "id": 1121
+  }
+}

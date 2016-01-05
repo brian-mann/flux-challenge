@@ -1,0 +1,16 @@
+{
+  "id": 1330,
+  "name": "Antinnis Tremayne",
+  "homeworld": {
+    "id": 58,
+    "name": "Coruscant"
+  },
+  "master": {
+    "url": "http://localhost:3000/dark-jedis/1489",
+    "id": 1489
+  },
+  "apprentice": {
+    "url": null,
+    "id": null
+  }
+}

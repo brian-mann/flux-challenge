@@ -1,0 +1,16 @@
+{
+  "id": 1489,
+  "name": "Darth Vader",
+  "homeworld": {
+    "id": 18,
+    "name": "Tatooine"
+  },
+  "master": {
+    "url": "http://localhost:3000/dark-jedis/3616",
+    "id": 3616
+  },
+  "apprentice": {
+    "url": "http://localhost:3000/dark-jedis/1330",
+    "id": 1330
+  }
+}

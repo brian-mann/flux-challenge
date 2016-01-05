@@ -1,0 +1,16 @@
+{
+  "id": 1121,
+  "name": "Darth Millennial",
+  "homeworld": {
+    "id": 94,
+    "name": "Dromund Kaas"
+  },
+  "master": {
+    "url": "http://localhost:3000/dark-jedis/2942",
+    "id": 2942
+  },
+  "apprentice": {
+    "url": "http://localhost:3000/dark-jedis/5956",
+    "id": 5956
+  }
+}

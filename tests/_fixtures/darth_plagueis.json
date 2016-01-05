@@ -1,0 +1,16 @@
+{
+  "id": 2350,
+  "name": "Darth Plagueis",
+  "homeworld": {
+    "id": 83,
+    "name": "Mygeeto"
+  },
+  "master": {
+    "url": "http://localhost:3000/dark-jedis/5956",
+    "id": 5956
+  },
+  "apprentice": {
+    "url": "http://localhost:3000/dark-jedis/3616",
+    "id": 3616
+  }
+}

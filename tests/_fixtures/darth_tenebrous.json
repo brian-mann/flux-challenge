@@ -1,0 +1,16 @@
+{
+  "id": 5956,
+  "name": "Darth Tenebrous",
+  "homeworld": {
+    "id": 90,
+    "name": "Clak'dor VII"
+  },
+  "master": {
+    "url": "http://localhost:3000/dark-jedis/1121",
+    "id": 1121
+  },
+  "apprentice": {
+    "url": "http://localhost:3000/dark-jedis/2350",
+    "id": 2350
+  }
+}
