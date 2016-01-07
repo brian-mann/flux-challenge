@@ -10,10 +10,10 @@ describe "Flux Challenge [000]", ->
         .route("/dark-jedis/5956", "fixture:darth_tenebrous").as("getDarthTenebrous")
         .route("/dark-jedis/1121", "fixture:darth_millennial").as("getDarthMillennial")
         .route("/dark-jedis/2942", "fixture:darth_cognus").as("getDarthCognus")
-        .visit("http://localhost:8080/submissions/abaran")
+        .visit("http://localhost:8080/submissions/leoasis")
 
     it "loads the app [001]", ->
-      cy.get(".app-container")
+      cy.get("#app")
 
     context "initial request for jedi data [002]", ->
       it "makes first request to /dark-jedis/3616 [003]", ->
@@ -40,27 +40,26 @@ describe "Flux Challenge [000]", ->
           .wait("@getDarthSidious")
 
           ## alias the elements we're reusing
-          .get("ul.css-slots li").as("slots")
           .get(".css-button-down").as("downButton")
 
           ## only Darth Sidious at first
-          .get("@slots").eq(0).should("contain", "Darth Sidious")
-          .get("@slots").eq(1).should("be.empty")
-          .get("@slots").eq(2).should("be.empty")
-          .get("@downButton").should("not.be.disabled")
+          .get("ul.css-slots li").eq(0).should("contain", "Darth Sidious")
+          .get("ul.css-slots li").eq(1).should("be.empty")
+          .get("ul.css-slots li").eq(2).should("be.empty")
+          .get("@downButton").should("be.disabled")
 
           ## then Darth Vader
           .wait("@getDarthVader")
-          .get("@slots").eq(0).should("contain", "Darth Sidious")
-          .get("@slots").eq(1).should("contain", "Darth Vader")
-          .get("@slots").eq(2).should("be.empty")
-          .get("@downButton").should("not.be.disabled")
+          .get("ul.css-slots li").eq(0).should("contain", "Darth Sidious")
+          .get("ul.css-slots li").eq(1).should("contain", "Darth Vader")
+          .get("ul.css-slots li").eq(2).should("be.empty")
+          .get("@downButton").should("be.disabled")
 
           ## then Antinnis Tremayne
           .wait("@getAntinnis")
-          .get("@slots").eq(0).should("contain", "Darth Sidious")
-          .get("@slots").eq(1).should("contain", "Darth Vader")
-          .get("@slots").eq(2).should("contain", "Antinnis Tremayne")
+          .get("ul.css-slots li").eq(0).should("contain", "Darth Sidious")
+          .get("ul.css-slots li").eq(1).should("contain", "Darth Vader")
+          .get("ul.css-slots li").eq(2).should("contain", "Antinnis Tremayne")
           .get(".css-button-down").should("be.disabled")
 
     context "scrolling up [006]", ->
@@ -68,11 +67,10 @@ describe "Flux Challenge [000]", ->
         ## perform this only after we have our data
         cy
           .wait(["@getDarthSidious", "@getDarthVader", "@getAntinnis"])
-          .get("ul.css-slots li").as("slots")
           .get(".css-button-up").as("upButton")
           .get(".css-button-down").as("downButton")
 
-      it.only "shifts the list up, inserts blank entries, then shifts the list down [007]", ->
+      it "shifts the list up, inserts blank entries, then shifts the list down [007]", ->
         ## there is a potential race condition here where our assertions
         ## happen AFTER the data has come back in. the better way of handling
         ## this is to upgrade the server to be able to permanently 'hold' XHR's
@@ -85,36 +83,36 @@ describe "Flux Challenge [000]", ->
           ## when we click the up button our slots should be shifted down
           ## with our existing data pushed down 2 slots
           .get("@upButton").click()
-          .get("@slots").eq(0).should("be.empty")
-          .get("@slots").eq(1).should("be.empty")
-          .get("@slots").eq(2).should("contain", "Darth Sidious")
-          .get("@slots").eq(3).should("contain", "Darth Vader")
-          .get("@slots").eq(4).should("contain", "Antinnis Tremayne")
+          .get("ul.css-slots li").eq(0).should("be.empty")
+          .get("ul.css-slots li").eq(1).should("be.empty")
+          .get("ul.css-slots li").eq(2).should("contain", "Darth Sidious")
+          .get("ul.css-slots li").eq(3).should("contain", "Darth Vader")
+          .get("ul.css-slots li").eq(4).should("contain", "Antinnis Tremayne")
 
           ## now darth plagueis should be in
           .wait("@getDarthPlagueis")
-          .get("@slots").eq(1).should("contain", "Darth Plagueis")
+          .get("ul.css-slots li").eq(1).should("contain", "Darth Plagueis")
 
           ## now Darth Tenebrous
           .wait("@getDarthTenebrous")
-          .get("@slots").eq(0).should("contain", "Darth Tenebrous")
+          .get("ul.css-slots li").eq(0).should("contain", "Darth Tenebrous")
 
           ## now go get next two darth's
           .get("@upButton").click()
 
-          .get("@slots").eq(0).should("be.empty")
-          .get("@slots").eq(1).should("be.empty")
-          .get("@slots").eq(2).should("contain", "Darth Tenebrous")
-          .get("@slots").eq(3).should("contain", "Darth Plagueis")
-          .get("@slots").eq(4).should("contain", "Darth Sidious")
+          .get("ul.css-slots li").eq(0).should("be.empty")
+          .get("ul.css-slots li").eq(1).should("be.empty")
+          .get("ul.css-slots li").eq(2).should("contain", "Darth Tenebrous")
+          .get("ul.css-slots li").eq(3).should("contain", "Darth Plagueis")
+          .get("ul.css-slots li").eq(4).should("contain", "Darth Sidious")
 
           ## now darth plagueis should be in
           .wait("@getDarthMillennial")
-          .get("@slots").eq(1).should("contain", "Darth Millennial")
+          .get("ul.css-slots li").eq(1).should("contain", "Darth Millennial")
 
           ## now Darth Tenebrous
           .wait("@getDarthCognus")
-          .get("@slots").eq(0).should("contain", "Darth Cognus")
+          .get("ul.css-slots li").eq(0).should("contain", "Darth Cognus")
 
     context "cancelling stale requests [008]", ->
       beforeEach ->
